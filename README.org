@@ -9,7 +9,7 @@ Sync scripts for phone and computer running on the Raspberry Pi
 Script that backs-up data from the phone
 
 The script uses ~adb-tools~ to do the syncing, and in particular uses
-~[[https://github.com/google/adb-sync/blob/master/adb-sync][adb-sync]]~ a simple Python script that wraps some of the adb-tools to
+[[https://github.com/google/adb-sync/blob/master/adb-sync][adb-sync]] a simple Python script that wraps some of the adb-tools to
 provide rsync like functionality.
 
 *** Setup
@@ -41,7 +41,7 @@ provide rsync like functionality.
 
 ~adb pull~ doesn't seem to work for files larger than 2GB from the
 Raspberry Pi. I suspect it is something to do with the [[https://raspberrypi.stackexchange.com/questions/44005/how-do-i-install-the-android-debug-bridge-adb-on-a-raspberry-pi][build of
-~adb-tools]]~ but haven't spent too much time debugging it.
+adb-tools]] but haven't spent too much time debugging it.
 
 It is very rare for me to have files >2GB on my phone, and the work
 around for me is to copy those files manually, for now.
