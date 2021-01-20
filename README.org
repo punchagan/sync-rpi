@@ -1,0 +1,47 @@
+#+TITLE: sync-rpi
+
+Sync scripts for phone and computer running on the Raspberry Pi
+
+* Scripts
+
+** ~phone.sh~
+
+Script that backs-up data from the phone
+
+The script uses ~adb-tools~ to do the syncing, and in particular uses
+~[[https://github.com/google/adb-sync/blob/master/adb-sync][adb-sync]]~ a simple Python script that wraps some of the adb-tools to
+provide rsync like functionality.
+
+*** Setup
+
+1. Ensure that ~adb~ is installed.
+
+   #+BEGIN_SRC sh
+     sudo apt install adb
+   #+END_SRC
+
+2. Clone ~adb-sync~ and ensure it is on ~$PATH~
+
+   #+BEGIN_SRC sh
+     git clone https://github.com/google/adb-sync.git
+
+     export PATH=$PATH:$PWD/adb-sync
+   #+END_SRC
+
+3. Enable [[https://developer.android.com/studio/debug/dev-options][USB Debugging mode]] on the phone
+
+4. Ensure that the Raspberry Pi and the phone are connected on the
+   same network, and allow ~adb~ to connect using [[https://developer.android.com/studio/command-line/adb#wireless][tcpip connections]]. You
+   can enable this setting by connecting your phone via USB to your
+   laptop, and you needn't connect it to your RPi.
+
+5. Run ~phone.sh~ and profit!
+
+*** Known issues
+
+~adb pull~ doesn't seem to work for files larger than 2GB from the
+Raspberry Pi. I suspect it is something to do with the [[https://raspberrypi.stackexchange.com/questions/44005/how-do-i-install-the-android-debug-bridge-adb-on-a-raspberry-pi][build of
+~adb-tools]]~ but haven't spent too much time debugging it.
+
+It is very rare for me to have files >2GB on my phone, and the work
+around for me is to copy those files manually, for now.
