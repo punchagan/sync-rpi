@@ -24,6 +24,8 @@ adb connect "$PHONE_IP:$ADB_PORT" | sed '/connected to/!{q42}'
 
 # Sync videos
 for dir in ${SRC_DIRS[@]}; do
-    echo "Backing up /sdcard/${dir} ..."
+    echo "LOG:$(date -Iseconds): Backing up /sdcard/${dir} ..."
     adb-sync --reverse "/sdcard/${dir}" "$TARGET_DIR"
 done
+
+echo "LOG:$(date -Iseconds):Successfully finished backup"
