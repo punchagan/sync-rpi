@@ -22,7 +22,7 @@ ping -q -c 1 -W 3 $PHONE_IP || (echo "Incorrect Phone IP address: $PHONE_IP" && 
 # Connect to phone
 adb connect "$PHONE_IP:$ADB_PORT" | sed '/connected to/!{q42}'
 
-# Sync videos
+# Sync directories
 for dir in ${SRC_DIRS[@]}; do
     echo "LOG:$(date -Iseconds): Backing up /sdcard/${dir} ..."
     adb-sync --reverse "/sdcard/${dir}" "$TARGET_DIR"
