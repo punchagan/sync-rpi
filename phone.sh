@@ -4,10 +4,11 @@
 
 set -e
 
-# FIXME: Hard-coded phone IP, should be able to discover it?
-PHONE_IP=192.168.1.100
+pushd $(dirname $0)
+source .envrc
+
 ADB_PORT=5555
-TARGET_DIR=/mnt/hdd/PhoneBackup
+TARGET_DIR=/mnt/backup-drive/PhoneBackup
 SRC_DIRS=("DCIM" "Download" "Notes" "Pictures" "Record" "VoiceRecorder" "WhatsApp")
 
 
@@ -26,6 +27,7 @@ function check_setup () {
 check_setup
 
 # Connect to phone
+# FIXME: Hard-coded phone IP, should be able to discover it?
 adb connect "$PHONE_IP:$ADB_PORT" | sed '/connected to/!{q42}'
 
 # Sync directories
