@@ -32,6 +32,11 @@ adb connect "$PHONE_IP:$ADB_PORT" | sed '/connected to/!{q42}'
 # Sync directories
 for dir in ${SRC_DIRS[@]}; do
     echo "LOG:$(date -Iseconds): Backing up /sdcard/${dir} ..."
+    LINES=$(adb ls "/sdcard/${dir}" | wc -l)
+    if [ $LINES = 0 ]
+    then
+       exit 1;
+    fi
     adb-sync --reverse "/sdcard/${dir}" "$TARGET_DIR"
 done
 
