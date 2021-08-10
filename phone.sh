@@ -9,7 +9,7 @@ source .envrc
 
 ADB_PORT=5555
 TARGET_DIR=/mnt/backup-drive/PhoneBackup
-SRC_DIRS=("DCIM" "Download" "Notes" "Pictures" "Recorders" "Android/media/com.whatsapp/WhatsApp")
+SRC_DIRS=("DCIM" "Download" "Notes" "Pictures" "Recorders" "WhatsApp" "Android/media/com.whatsapp")
 
 function check_setup () {
     # Check if adb exists
