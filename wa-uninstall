@@ -1,0 +1,8 @@
+#!/bin/bash
+# Script to run as a termux widget
+
+# NOTE: Termux:Widgets needs to be installed to use this script as a shortcut.
+# NOTE: scp the script from inside Termux into $HOME/.shortcuts/
+
+RPI_IP=192.168.0.127
+ssh "pi@${RPI_IP}" ./code/sync-rpi/uninstall-whatsapp.sh
