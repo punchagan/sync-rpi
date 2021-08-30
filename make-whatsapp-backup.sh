@@ -32,6 +32,9 @@ function click-description {
     adb shell input tap ${xy}
 }
 
+pushd $(dirname $0)
+source .envrc
+adb connect "$PHONE_IP:$ADB_PORT" | sed '/connected to/!{q42}'
 adb shell am start -n com.whatsapp/com.whatsapp.Main
 click-description "More options"
 click-description "Settings"
